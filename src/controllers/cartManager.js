@@ -19,8 +19,8 @@ export default class CartManager {
             cid: "CART" + (carts.length + 1),
             products: []
         };
-        carts.push(newCart);
-        await fs.promises.writeFile(path, JSON.stringify(carts, null, '\t'));
+        const addCart = [...carts, newCart];
+        await fs.promises.writeFile(path, JSON.stringify(addCart, null, '\t'));
         return newCart;
     };
     getCartById = async (cid)=>{
@@ -33,26 +33,24 @@ export default class CartManager {
         }
         return cart;
     };
-    addProductToCart = async (cid, pid)=>{
-        const cart = await this.getCartById(cid);
-        if(cart === null){
-            return console.error(`El carrito con id: ${cart} no existe.`);
+    addProductToCart = async (cid, pid) => {
+            const carts = await this.getCarts();
+            const cartIndex = carts.findIndex((cart) => cart.cid === cid);  
+            if (cartIndex === -1) {
+            return console.error(`El carrito con id: ${cid} no existe.`);
+            }
+            const cart = carts[cartIndex];
+            const product = await productManager.getProductById(pid);
+            if (product === null) {
+            return console.error(`El producto con id: ${pid} no existe.`);
+            }
+            const productIndex = cart.products.findIndex((p) => p.pid === pid);
+            if (productIndex !== -1) {
+            cart.products[productIndex].quantity++;
+            } else {
+            cart.products.push({ pid, quantity: 1 });
+            }
+            await fs.promises.writeFile(path, JSON.stringify(carts, null, '\t'));
+            return cart;
         };
-        const product = await productManager.getProductById(pid);
-        if(product === null){
-            return console.error(`El producto con id: ${product} no existe.`);
-        };
-        const productIndex = cart[0].products.findIndex((p) => p.pid === pid);
-        if (productIndex !== -1) {
-            cart[0].products[productIndex].quantity++;
-        }else{
-            cart[0].products.push({ pid, quantity: 1 });
-        };
-        await fs.promises.writeFile(path, JSON.stringify(cart, null, '\t'));
-        return cart;
     };
-};
-
-
-
-

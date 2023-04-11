@@ -21,7 +21,7 @@ router.get('/:cid', async (req, res) => {
     }catch (error) {
         res.status(400).send({
             status: "Error",
-            msg: `Los productos del carro solicitado no se pueden visualizar.`
+            msg: `El carro solicitado no se pueden visualizar.`
         });
     }
 });
