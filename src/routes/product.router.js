@@ -15,7 +15,6 @@ router.get('/', async (req, res)=>{
             return res.status(200).send(products);
         }
     }catch (error) {
-        console.error(error);
         res.status(400).send({
             status: "Error",
             msg: `Los productos solicitados no se pueden visualizar.`
@@ -28,7 +27,6 @@ router.get('/:pid', async (req, res)=>{
         const product = await productManager.getProductById(pid);
         res.status(200).send(product);
     }catch (error) {
-        console.error(error);
         res.status(400).send({
             status: "Error",
             msg: `El producto con ID: ${pid} no existe o no se pudo encontrar.`
@@ -41,7 +39,6 @@ router.post('/' , async (req, res)=>{
         const product = await productManager.addProduct({ title, description, price, thumbnail, code, stock });
         return res.status(200).send(product);
     }catch (error){
-        console.error(error);
         res.status(400).send({
             status: "Error",
             msg: error.message
@@ -61,7 +58,6 @@ router.delete('/:pid', async (req, res) => {
     const updatedProductList = await productManager.deleteProduct(pid);
     return res.status(200).send(updatedProductList);
     } catch (error) {
-    console.error(error);
     res.status(400).send({
         status: "Error",
         msg: `El producto con ID: ${pid} no se ha podido eliminar.`
@@ -75,7 +71,6 @@ router.put('/:pid', async (req, res)=>{
         const product = await productManager.updateProduct(pid, updates);
         res.status(200).send(product);
     }catch (error){
-        console.error(error);
         res.status(400).send({
             status: "Error",
             msg: `El producto con ID: ${pid} no se ha podido actualizar.`

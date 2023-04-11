@@ -50,6 +50,7 @@ export default class ProductManager {
         const products = await this.getProducts();
         const productIndex = products.findIndex((product) => product.pid === pid);
         if (productIndex === -1) {
+        //Aca me gustaria cambiar el console.error por un error de verdad
             return console.error(`El producto con ID "${pid}" no existe.`);
         }
         products.splice(productIndex, 1);
@@ -60,10 +61,12 @@ export default class ProductManager {
         const products = await this.getProducts();
         const productIndex = products.findIndex((product) => product.pid === pid);
         if (productIndex === -1) {
+            //Aca me gustaria cambiar el console.error por un error de verdad
             return console.error(`El producto con ID "${pid}" no existe.`);
         }
         if (updates.code && updates.code !== products[productIndex].code) {
             if (products.some((product) => product.code === updates.code)) {
+                //Aca me gustaria cambiar el console.error por un error de verdad
                 return console.error(`El código "${updates.code}" ya está en uso por otro producto.`);
             }
         }
@@ -71,6 +74,7 @@ export default class ProductManager {
         const fieldNames = Object.keys(updatedProduct);
         for (const fieldName of fieldNames) {
             if (!updatedProduct[fieldName]) {
+                //Aca me gustaria cambiar el console.error por un error de verdad
                 return console.error(`El campo "${fieldName}" es requerido.`);
             }
         }
