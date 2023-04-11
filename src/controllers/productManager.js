@@ -24,7 +24,7 @@ export default class ProductManager {
             description,
             price,
             thumbnail,
-            status: 'true',
+            status: true,
             code,
             stock,
         };
@@ -44,6 +44,9 @@ export default class ProductManager {
         const product = products.filter((product) => {
             return product.pid == pid;
         });
+        if (product.length === 0) {
+            return null;
+        }
         return product;
     }
     deleteProduct = async (pid) => {

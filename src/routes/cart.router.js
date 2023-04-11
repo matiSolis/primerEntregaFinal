@@ -6,8 +6,7 @@ const cartManager = new CartManager();
 
 router.get('/', async (req, res) => {
     try {
-        const totalCarts = await cartManager.getCarts();
-        return res.status(200).send(totalCarts);
+        return res.status(200).send(await cartManager.getCarts());
     }catch(error){
         res.status(400).send({
             status: "Error",
@@ -18,8 +17,7 @@ router.get('/', async (req, res) => {
 router.get('/:cid', async (req, res) => {
     try{
         const cid = req.params.cid;
-        const cart = await cartManager.getCartById(cid);
-        return res.status(200).send(cart);
+        return res.status(200).send(await cartManager.getCartById(cid));
     }catch (error) {
         res.status(400).send({
             status: "Error",
@@ -29,8 +27,7 @@ router.get('/:cid', async (req, res) => {
 });
 router.post('/', async (req, res) => {
     try{
-        const cart = await cartManager.addCart();
-        return res.status(200).send(cart);
+        return res.status(200).send(await cartManager.addCart());
     }catch (error) {
         res.status(400).send({
             status: "Error",

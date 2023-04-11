@@ -28,13 +28,19 @@ export default class CartManager {
         const cart = carts.filter((cart)=>{
             return cart.cid == cid;
         });
+        if (cart.length === 0) {
+            return null;
+        }
         return cart;
     };
     addProductToCart = async (cid, pid)=>{
         const cart = await this.getCartById(cid);
+        if(cart === null){
+            return console.error(`El carrito con id: ${cart} no existe.`);
+        };
         const product = await productManager.getProductById(pid);
-        if(!cart || !product){
-            return console.error(`El cart con id: ${cid} o el producto con id: ${product} no existe.`);
+        if(product === null){
+            return console.error(`El producto con id: ${product} no existe.`);
         };
         const productIndex = cart[0].products.findIndex((p) => p.pid === pid);
         if (productIndex !== -1) {

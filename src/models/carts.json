@@ -1,23 +1,19 @@
 [
 	{
-		"cid": "CART1",
+		"cid": "CART2",
 		"products": [
 			{
-				"pid": "2",
-				"quantity": 3
-			},
-			{
-				"pid": "6",
+				"pid": "PROD6",
 				"quantity": 1
 			},
 			{
-				"pid": "11",
+				"pid": "PROD2",
+				"quantity": 4
+			},
+			{
+				"pid": "PROD1",
 				"quantity": 1
 			}
 		]
-	},
-	{
-		"cid": "CART2",
-		"products": []
 	}
 ]

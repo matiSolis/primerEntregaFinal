@@ -5,7 +5,7 @@
 		"description": "Maceta bolsa soplada 5lt.",
 		"price": 150,
 		"thumbnail": "foto.jpg",
-		"status": "true",
+		"status": true,
 		"code": "M5",
 		"stock": 100
 	},
@@ -15,7 +15,7 @@
 		"description": "Maceta bolsa soplada 10lt.",
 		"price": 275,
 		"thumbnail": "foto.jpg",
-		"status": "true",
+		"status": true,
 		"code": "M10",
 		"stock": 150
 	},
@@ -25,7 +25,7 @@
 		"description": "Maceta bolsa soplada 20lt.",
 		"price": 400,
 		"thumbnail": "foto.jpg",
-		"status": "true",
+		"status": true,
 		"code": "M20",
 		"stock": 150
 	},
@@ -35,7 +35,7 @@
 		"description": "Maceta plastica 20lt.",
 		"price": 600,
 		"thumbnail": "foto.jpg",
-		"status": "true",
+		"status": true,
 		"code": "MP20",
 		"stock": 200
 	},
@@ -45,7 +45,7 @@
 		"description": "Bolson de 20lt tierra negra seleccionada para canteros.",
 		"price": 600,
 		"thumbnail": "foto.jpg",
-		"status": "true",
+		"status": true,
 		"code": "TN20",
 		"stock": 30
 	},
@@ -55,7 +55,7 @@
 		"description": "Bolson de 10lt tierra preparada para macetas.",
 		"price": 350,
 		"thumbnail": "foto.jpg",
-		"status": "true",
+		"status": true,
 		"code": "TM10",
 		"stock": 30
 	},
@@ -65,7 +65,7 @@
 		"description": "Bolson de 20lt tierra preparada para macetas.",
 		"price": 600,
 		"thumbnail": "foto.jpg",
-		"status": "true",
+		"status": true,
 		"code": "TM20",
 		"stock": 30
 	},
@@ -75,7 +75,7 @@
 		"description": "Pala para jardineria 25cm.",
 		"price": 700,
 		"thumbnail": "foto.jpg",
-		"status": "true",
+		"status": true,
 		"code": "P25",
 		"stock": 10
 	},
@@ -85,7 +85,7 @@
 		"description": "Saca yuyos metalico.",
 		"price": 1300,
 		"thumbnail": "foto.jpg",
-		"status": "true",
+		"status": true,
 		"code": "SY1",
 		"stock": 10
 	},
@@ -95,7 +95,7 @@
 		"description": "Fertilizante 1lt, humus de lombriz",
 		"price": 800,
 		"thumbnail": "foto.jpg",
-		"status": "true",
+		"status": true,
 		"code": "FH1",
 		"stock": 15
 	},
@@ -105,8 +105,8 @@
 		"description": "Rastrillo metalico con palo.",
 		"price": 1500,
 		"thumbnail": "foto.jpg",
-		"status": "true",
+		"status": true,
 		"code": "RM1",
-		"stock": 14
+		"stock": 25
 	}
 ]

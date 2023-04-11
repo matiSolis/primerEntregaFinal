@@ -24,8 +24,7 @@ router.get('/', async (req, res)=>{
 router.get('/:pid', async (req, res)=>{
     try{
         const pid = req.params.pid;
-        const product = await productManager.getProductById(pid);
-        res.status(200).send(product);
+        res.status(200).send(await productManager.getProductById(pid));
     }catch (error) {
         res.status(400).send({
             status: "Error",
@@ -36,8 +35,7 @@ router.get('/:pid', async (req, res)=>{
 router.post('/' , async (req, res)=>{
     try{
         const { title, description, price, thumbnail, code, stock } = req.body;
-        const product = await productManager.addProduct({ title, description, price, thumbnail, code, stock });
-        return res.status(200).send(product);
+        return res.status(200).send(await productManager.addProduct({ title, description, price, thumbnail, code, stock }));
     }catch (error){
         res.status(400).send({
             status: "Error",
@@ -55,8 +53,7 @@ router.delete('/:pid', async (req, res) => {
         msg: `El producto con ID: ${pid} no existe o no se pudo encontrar.`
         });
     }
-    const updatedProductList = await productManager.deleteProduct(pid);
-    return res.status(200).send(updatedProductList);
+    return res.status(200).send(await productManager.deleteProduct(pid));
     } catch (error) {
     res.status(400).send({
         status: "Error",
@@ -68,8 +65,7 @@ router.put('/:pid', async (req, res)=>{
     try{
         const pid = req.params.pid;
         const updates = req.body;
-        const product = await productManager.updateProduct(pid, updates);
-        res.status(200).send(product);
+        res.status(200).send(await productManager.updateProduct(pid, updates));
     }catch (error){
         res.status(400).send({
             status: "Error",
