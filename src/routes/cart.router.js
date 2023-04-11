@@ -5,14 +5,13 @@ const router = Router();
 const cartManager = new CartManager();
 
 router.get('/', async (req, res) => {
-    try{
-        const cart = await cartManager.addCart();
-        return res.status(200).send(cart);
-    }catch (error) {
+    try {
+        return res.statusCode(200).send(cartManager.getCarts());
+    }catch(error){
         console.error(error);
         res.status(400).send({
             status: "Error",
-            msg: `El carrito solicitado no se puede visualizar.`
+            msg: `El total de carritos no se puede visualizar.`
         });
     }
 });
@@ -26,6 +25,18 @@ router.get('/:cid', async (req, res) => {
         res.status(400).send({
             status: "Error",
             msg: `Los productos del carro solicitado no se pueden visualizar.`
+        });
+    }
+});
+router.post('/', async (req, res) => {
+    try{
+        const cart = await cartManager.addCart();
+        return res.status(200).send(cart);
+    }catch (error) {
+        console.error(error);
+        res.status(400).send({
+            status: "Error",
+            msg: `El carrito solicitado no se puede visualizar.`
         });
     }
 });
