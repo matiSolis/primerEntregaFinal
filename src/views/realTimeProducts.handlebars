@@ -1,0 +1,50 @@
+<div>
+    <div>
+    <h3>AGREGAR PRODUCTO</h3>
+    <form action="/api/users" method="post">
+        <label>Titulo</label>
+        <input name="title">
+        <br/>
+        <br/>
+        <label>Descripcion</label>
+        <input name="description">
+        <br/>
+        <br/>
+        <label>Precio</label>
+        <input name="price" type="number">
+        <br/>
+        <br/>
+        <label>Foto</label>
+        <input name="thumbnail">
+        <br/>
+        <br/>
+        <label>Codigo</label>
+        <input name="code">
+        <br/>
+        <br/>
+        <label>Stock</label>
+        <input name="stock">
+        <br/>
+        <br/>
+        <input type="button" value="AGREGAR PRODUCTO">
+    </form>
+    </div>
+    <div>
+        <h3>ELIMINAR PRODUCTO</h3>
+        <form action="">
+            <label>Ingrese el PID del producto a eliminar</label>
+            <input name="pid">
+            <br/>
+            <br/>
+            <input type="button" value="ELIMINAR PRODUCTO">
+        </form>
+    </div>
+    <div>
+        <h3>LISTA DE PRODUCTOS</h3>
+        <ul>
+            <p id="productList"></p>
+        </ul>
+    </div>
+</div>
+<script src="/socket.io/socket.io.js"></script>
+<script src="js/realTimeProducts.js"></script>
