@@ -3,12 +3,12 @@ import ProductManager from "../controllers/ProductManager.js";
 
 const router = Router();
 const productManager = new ProductManager();
-const path ='./src/models/products.json';
 
 
 router.get('/realTimeProducts', async (req, res) => {
 try {
-    res.render('realTimeProducts',{path});
+    let allProducts = await productManager.getProducts()
+    res.render('realTimeProducts', {allProducts});
 } catch (error) {
     res.status(400).send({
     status: "Error",

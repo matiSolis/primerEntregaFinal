@@ -5,6 +5,7 @@ import productRouter from './routes/product.router.js';
 import cartRouter from './routes/cart.router.js';
 import __dirname from "./utils.js";
 import viewsRouter from "./routes/views.routes.js";
+import ProductManager from "./controllers/ProductManager.js";
 
 const PORT = process.env.PORT || 8080;
 const app = express();
@@ -26,16 +27,23 @@ app.use('/api/products/', productRouter);
 app.use('/api/carts/', cartRouter);
 
 const io = new Server(server);
+const productManager = new ProductManager();
 
-
-io.on('connection', Socket => {
+io.on('connection', async Socket => {
     console.log('socket connected');
-    
-    Socket.on("message", data => {
+    const products = await productManager.getProducts();
+    io.emit('productList', products)
+    Socket.on('message', data => {
         io.emit('log', data)
-    })
-    Socket.on('productList', data =>{
-        path.forEach(data);
-        io.emit('productList', path);
+    });
+    Socket.on('product', async newProd=> {
+        let newProduct = await productManager.addProduct(newProd);
+        const products = await productManager.getProducts();
+        io.emit('productList', products)
+    });
+    Socket.on('product', async delProd =>{
+        let pid = await productManager.deleteProduct(delProd);
+        const products = await productManager.getProducts();
+        io.emit('productList', products)
     })
 });
