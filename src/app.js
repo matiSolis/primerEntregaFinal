@@ -5,7 +5,6 @@ import productRouter from './routes/product.router.js';
 import cartRouter from './routes/cart.router.js';
 import __dirname from "./utils.js";
 import viewsRouter from "./routes/views.routes.js";
-import ProductManager from "../controllers/ProductManager.js";
 
 const PORT = process.env.PORT || 8080;
 const app = express();
@@ -26,9 +25,8 @@ app.use('/realTimeProducts',viewsRouter)
 app.use('/api/products/', productRouter);
 app.use('/api/carts/', cartRouter);
 
-const productManager = new ProductManager();
 const io = new Server(server);
-const path ='./src/models/products.json';
+
 
 io.on('connection', Socket => {
     console.log('socket connected');
@@ -36,5 +34,8 @@ io.on('connection', Socket => {
     Socket.on("message", data => {
         io.emit('log', data)
     })
-    socket.emit('productList', productManager.getProducts());
+    Socket.on('productList', data =>{
+        path.forEach(data);
+        io.emit('productList', path);
+    })
 });
