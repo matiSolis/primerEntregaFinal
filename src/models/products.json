@@ -98,15 +98,5 @@
 		"status": true,
 		"code": "FH1",
 		"stock": 15
-	},
-	{
-		"pid": "PROD11",
-		"title": "Rastrillo",
-		"description": "Rastrillo metalico con palo.",
-		"price": 1500,
-		"thumbnail": "foto.jpg",
-		"status": true,
-		"code": "RM1",
-		"stock": 25
 	}
 ]

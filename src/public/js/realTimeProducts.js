@@ -16,7 +16,7 @@ addProd.addEventListener("click", event =>{
                             thumbnail,
                             code,
                             stock};
-        socket.emit('product', newProduct);
+        socket.emit('productAdd', newProduct);
     }
 });
 
@@ -24,7 +24,7 @@ const deletProd = document.getElementById("deletProd");
 deletProd.addEventListener("click", event =>{
     if(event){
         const pid = document.getElementById('pid').value;
-        socket.emit('product', pid);
+        socket.emit('productDeleted', pid);
     }
 });
 

@@ -36,12 +36,12 @@ io.on('connection', async Socket => {
     Socket.on('message', data => {
         io.emit('log', data)
     });
-    Socket.on('product', async newProd=> {
+    Socket.on('productAdd', async newProd=> {
         let newProduct = await productManager.addProduct(newProd);
         const products = await productManager.getProducts();
         io.emit('productList', products)
     });
-    Socket.on('product', async delProd =>{
+    Socket.on('productDeleted', async delProd =>{
         let pid = await productManager.deleteProduct(delProd);
         const products = await productManager.getProducts();
         io.emit('productList', products)
